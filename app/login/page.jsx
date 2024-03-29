@@ -1,7 +1,18 @@
 import React from 'react';
 import styles from './login.module.scss';
-import { FaGoogle, FaFacebookF, FaTwitter, FaGithub } from 'react-icons/fa';
+import {
+  FaGoogle,
+  FaFacebookF,
+  FaTwitter,
+  FaGithub,
+  FaPersonBooth,
+  FaHeart,
+  FaMotorcycle,
+  FaTags,
+} from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/assets/images/logo2.jpg';
 
 const LoginPage = () => {
   async function handleSubmit(formaData) {
@@ -13,6 +24,27 @@ const LoginPage = () => {
 
   return (
     <div className={styles.pageContainer}>
+      <div className={styles.textContainer}>
+        <Image src={logo} height={100} width={100} alt='bike arot logo' />
+        <h2>
+          Welcome to <span>Bike Arot </span>{' '}
+        </h2>
+        <p>Sign in to manage your account and start selling bikes today!</p>
+        <ul>
+          <li>
+            <FaMotorcycle size={25} />
+            <span>You can post to sell bikes.</span>
+          </li>
+          <li>
+            <FaHeart size={25} />
+            <span>Can add to favourite bike list.</span>
+          </li>
+          <li>
+            <FaTags size={25} />
+            <span>Review your ads at your convenience and manage them.</span>
+          </li>
+        </ul>
+      </div>
       <div className={styles.formContainer}>
         <h1 className={styles.title}>Login</h1>
         <form className={styles.form} action={handleSubmit}>
