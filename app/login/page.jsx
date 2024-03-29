@@ -49,12 +49,12 @@ const LoginPage = () => {
         <h1 className={styles.title}>Login</h1>
         <form className={styles.form} action={handleSubmit}>
           <div className={styles.inputGroup}>
-            <label htmlFor='username'>Username/Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               type='text'
-              name='username'
-              id='username'
-              placeholder='Your Email or Username'
+              name='email'
+              id='email'
+              placeholder='Enter your email'
             />
           </div>
           <div className={styles.inputGroup}>
@@ -63,7 +63,7 @@ const LoginPage = () => {
               type='password'
               name='password'
               id='password'
-              placeholder='Your password'
+              placeholder='Enter your password'
             />
             <div className={styles.forgot}>
               <Link
@@ -98,7 +98,7 @@ const LoginPage = () => {
 
         <p className={styles.signup}>
           Don't have an account?
-          <Link href='#'>Sign up</Link>
+          <Link href='/register'>Sign up</Link>
         </p>
       </div>
     </div>
