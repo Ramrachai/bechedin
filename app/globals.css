@@ -2,28 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "Beyond";
+  src: url('../assets/fonts/beyond_the_mountains.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --primary:  #8d4fff; 
+  --secondary: #fa9e1b; 
+  --black: #111827;; 
+  --softBlack: #19233a; 
+  --white: #f6f5f3; 
+  --softWhite: #9ca3af; 
+  --grad-1: linear-gradient(90deg,#8d4fff, #fa9e1b); 
+  --grad-2: linear-gradient(135deg, #fa9e1b, #8d4fff); 
+  --beyond: "Beyond" , sans-serif;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  
 }
 
 @layer utilities {
