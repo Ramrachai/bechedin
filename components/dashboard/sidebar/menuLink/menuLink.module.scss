@@ -1,0 +1,24 @@
+
+.container {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    width: max-content;
+
+    @media (max-width: 600px) {
+      gap: 0px;
+
+      span {
+        display: none;
+      }
+    }
+  }
+  
+  .container:hover,
+  .active {
+    background-color: #2e374a;
+  }
+  

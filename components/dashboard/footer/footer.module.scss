@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  color: var(--textSoft);
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: var(--bgSoft);
+
+  p {
+    font-size: 13px;
+    a {
+      color: var(--primary);
+    }
+  }
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.text {
+  font-size: 12px;
+}
