@@ -20,6 +20,8 @@ export default function MainMenu() {
 export function Menubar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const pathname = usePathname();
+  const isHomepage = pathname === '/';
 
   const menuItems = [
     {
@@ -38,11 +40,11 @@ export function Menubar() {
   ];
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${!isHomepage && styles.dark}`}>
       <div className={styles.container}>
-        <div className={styles.logo}>
+        <Link href={'/'} className={styles.logo}>
           <Image src={logo} alt='bike arot logo' width={100} />
-        </div>
+        </Link>
         <ul className={styles.links}>
           {menuItems.map((item, index) => (
             <Link href={item.link} key={index} className={styles.menuItem}>

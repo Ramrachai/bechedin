@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Find Your Perfect Ride",
+    "description": "Explore a wide range of second-hand motorbikes available for sale on Bike Arot. Buy bikes hasslefree at lower price",
+    "listItems": [
+      "Affordable options for your dream bike",
+      "Diverse selection of models and brands",
+      "Connect with trusted sellers"
+    ],
+    "btnText": "Start Browsing",
+    "btnLink": "/allbike"
+  },
+  {
+    "title": "Sell Bike Confidently",
+    "description": "Sell your used motorbike confidently on Bike Arot. Create detailed listings with specifications, images, and pricing.",
+    "listItems": [
+      "Create detailed listings",
+      "Set your desired price",
+      "Earn money easily"
+    ],
+    "btnText": "Sell Now",
+    "btnLink": "/sellbike"
+  },
+  {
+    "title": "Biking Community",
+    "description": "Join Bike Arot's biking community to share experiences, seek advice, and plan adventures with fellow riders.",
+    "listItems": [
+      "Engage with fellow riders",
+      "Share biking experiences",
+      "Seek advice and tips"
+    ],
+    "btnText": "Join Bike Adda",
+    "btnLink": "/bikeadda"
+  }
+]

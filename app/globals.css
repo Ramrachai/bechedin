@@ -25,7 +25,14 @@
     --textSoft: #b7bac1;
     --grad-1: linear-gradient(90deg,#8d4fff, #fa9e1b); 
     --grad-2: linear-gradient(135deg, #fa9e1b, #8d4fff); 
+    --grad-3: linear-gradient(90deg,#800080, #fb2e17); 
+    --grad-4: linear-gradient(135deg, #fb2e17, #800080); 
+
+
     --beyond: "Beyond" , sans-serif;
+    --shadow-1:  0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --shadow-2:  0 8px 16px 0 rgba(128, 0, 128, 0.695), 0 6px 20px 0 rgba(251, 46, 23, 0.2);
+    
 
     /* ----- */
     --background: #ffffff;
@@ -47,7 +54,7 @@
     --muted: #29334B;
     --muted-foreground: #6E7480;
 
-    --accent: #6d016d;
+    --accent: #ce6fce;
     --accent-foreground: #2c2c2c;
 
     --destructive: #BB5A5A;
@@ -57,7 +64,7 @@
     --input: #690069;
     --ring: #151C2C;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -97,6 +104,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 }

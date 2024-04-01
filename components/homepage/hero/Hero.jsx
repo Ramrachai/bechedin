@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { MdSearch } from 'react-icons/md';
 
 const Hero = () => {
   const bikeBrands = [
@@ -80,8 +81,8 @@ const Hero = () => {
             </SelectContent>
           </Select>
 
-          <Button type='submit' className='bg-primary'>
-            Search
+          <Button type='submit'>
+            <MdSearch className='mr-2' /> Search
           </Button>
         </form>
       </div>

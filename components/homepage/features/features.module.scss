@@ -1,0 +1,27 @@
+.features {
+    padding: 4rem; 
+
+    .description{
+        color:var(--softWhite); 
+        text-align: center;
+        margin: 2rem auto;
+        max-width: 35rem;
+
+    }
+
+    .cardContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem; 
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+        padding: 2rem; 
+
+        .cardContainer{
+            flex-direction: column;
+        }
+    }
+}

@@ -22,10 +22,11 @@
     text-transform: capitalize;
   }
   .formContainer {
-    padding: 2rem 1rem;
+    padding: 2rem ;
     margin-top: 1rem;
     background-color: var(--primary-light);
     border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
 
     h4{
         margin-bottom: 1rem;
