@@ -12,7 +12,7 @@ import {
 } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '@/assets/images/logo2.jpg';
+import logo from '@/assets/images/logo.png';
 
 const LoginPage = () => {
   async function handleSubmit(formaData) {
