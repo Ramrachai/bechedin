@@ -6,10 +6,11 @@ import styles from './menubar.module.scss';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { FaHamburger } from 'react-icons/fa';
+import { FaHamburger, FaUserPlus } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Button } from '../ui/button';
+import { MdLogin } from 'react-icons/md';
 
 export default function MainMenu() {
   const pathname = usePathname();
@@ -19,7 +20,7 @@ export default function MainMenu() {
 
 export function Menubar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
   const isHomepage = pathname === '/';
 
@@ -70,7 +71,12 @@ export function Menubar() {
               <span>Ramrachai</span>
             </Link>
           ) : (
-            <Link href={'/login'}>Login</Link>
+            <Link
+              href={'/register'}
+              className='hidden items-center sm:flex border px-3 py-2 rounded hover:bg-[#ffffff21]'>
+              <FaUserPlus size={20} className='inline mr-2' />
+              Register
+            </Link>
           )}
         </div>
 
@@ -92,7 +98,12 @@ export function Menubar() {
                 <span>Ramrachai</span>
               </Link>
             ) : (
-              <Link href={'/login'}>Login</Link>
+              <Link
+                href={'/register'}
+                className='flex items-center sm:hidden border px-3 py-2 rounded  hover:bg-[#ffffff21]'>
+                <FaUserPlus size={20} className='inline mr-2' />
+                Register
+              </Link>
             )}
           </div>
         )}

@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <div className={styles.hero}>
       <h1>Bike arot</h1>
-      <h2>buy or sell your bike with confidence</h2>
+      <h2>buy or sell bikes with confidence</h2>
 
       <div className={styles.formContainer}>
         <h4>Find your future bike</h4>

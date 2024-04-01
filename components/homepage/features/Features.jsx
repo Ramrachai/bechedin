@@ -7,9 +7,15 @@ import featureCardData from '@/lib/featureCardData.json';
 const Features = () => {
   return (
     <div className={styles.features}>
+      <div className={styles.cardContainer}>
+        {featureCardData.map((item, index) => {
+          return <FeatureCard key={index} item={item} />;
+        })}
+      </div>
+
       <GradientText
         className={
-          'font-beyond text-3xl sm:text-5xl tracking-wider text-center block m-4 sm:m-8'
+          'font-beyond text-3xl sm:text-5xl tracking-wider  text-center block m-4 sm:m-8'
         }>
         Discover More, Ride Further
       </GradientText>
@@ -18,11 +24,6 @@ const Features = () => {
         enthusiasts, and embark on unforgettable journeys with{' '}
         <GradientText className={'font-bold'}>Bike Arot</GradientText>.
       </p>
-      <div className={styles.cardContainer}>
-        {featureCardData.map((item, index) => {
-          return <FeatureCard key={index} item={item} />;
-        })}
-      </div>
     </div>
   );
 };
