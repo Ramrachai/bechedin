@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: "Beyond";
   src: url('../assets/fonts/beyond_the_mountains.otf') format('truetype');
@@ -9,44 +10,93 @@
   font-style: normal;
 }
 
-:root {
-  --primary:  #8d4fff; 
-  --secondary: #fa9e1b; 
-  --black: #111827;; 
-  --softBlack: #29334b; 
-  --white: #f6f5f3; 
-  --softWhite: #6e7480; 
-  --bg: #151c2c;
-  --bgSoft: #182237;
-  --text: white;
-  --textSoft: #b7bac1;
-  --grad-1: linear-gradient(90deg,#8d4fff, #fa9e1b); 
-  --grad-2: linear-gradient(135deg, #fa9e1b, #8d4fff); 
-  --beyond: "Beyond" , sans-serif;
-}
 
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  :root {
+
+    --black: #111827; 
+    --softBlack: #29334b; 
+    --white: #f6f5f3; 
+    --softWhite: #6e7480; 
+    --bg: #151c2c;
+    --bgSoft: #182237;
+    --text: white;
+    --textSoft: #b7bac1;
+    --grad-1: linear-gradient(90deg,#8d4fff, #fa9e1b); 
+    --grad-2: linear-gradient(135deg, #fa9e1b, #8d4fff); 
+    --beyond: "Beyond" , sans-serif;
+
+    /* ----- */
+    --background: #ffffff;
+    --foreground: #1e1e1e;
+
+    --card: #ffffff;
+    --card-foreground: #3b3b3b;
+
+    --popover: #ffffff;
+    --popover-foreground: #3b3b3b;
+
+    --primary: #800080;
+    --primary-foreground: #e4e4e4;
+    --primary-light: #8000805d;
+
+    --secondary: #fb2e17;
+    --secondary-foreground: #ffffff;
+
+    --muted: #29334B;
+    --muted-foreground: #6E7480;
+
+    --accent: #6d016d;
+    --accent-foreground: #2c2c2c;
+
+    --destructive: #BB5A5A;
+    --destructive-foreground: #FA9E1B;
+
+    --border: #D3E0EB;
+    --input: #690069;
+    --ring: #151C2C;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #3b3b3b;
+    --foreground: #FA9E1B;
+
+    --card: #3b3b3b;
+    --card-foreground: #FA9E1B;
+
+    --popover: #3b3b3b;
+    --popover-foreground: #FA9E1B;
+
+    --primary: #FA9E1B;
+    --primary-foreground: #8D4FFF;
+
+    --secondary: #617993;
+    --secondary-foreground: #FA9E1B;
+
+    --muted: #617993;
+    --muted-foreground: #b1b1b1;
+
+    --accent: #617993;
+    --accent-foreground: #FA9E1B;
+
+    --destructive: #a52a2a;
+    --destructive-foreground: #FA9E1B;
+
+    --border: #617993;
+    --input: #617993;
+    --ring: #a8a8a8;
   }
 }
 
-
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+  }
 }

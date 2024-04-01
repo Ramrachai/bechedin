@@ -5,7 +5,6 @@ import Card from '@/components/dashboard/card/Card';
 import Chart from '@/components/dashboard/chart/Chart';
 
 const Dashboard = () => {
-  console.log(cards);
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
