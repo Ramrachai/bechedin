@@ -72,9 +72,9 @@ const Sidebar = () => {
           icon: <MdOutlineSettings />,
         },
         {
-          title: 'Help',
-          path: '/dashboard/help',
-          icon: <MdHelpCenter />,
+          title: 'Logout',
+          path: '/',
+          icon: <MdLogout />,
         },
       ],
     },

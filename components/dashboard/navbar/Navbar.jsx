@@ -8,6 +8,7 @@ import {
   MdPublic,
   MdSearch,
 } from 'react-icons/md';
+import Link from 'next/link';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -33,7 +34,10 @@ const Navbar = () => {
         <div className={styles.icons}>
           <MdOutlineChat size={20} />
           <MdNotifications size={20} />
-          <MdPublic size={20} />
+
+          <Link href={'/'} title='Goto Home page'>
+            <MdPublic size={20} />
+          </Link>
         </div>
       </div>
     </div>

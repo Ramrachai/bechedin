@@ -6,7 +6,7 @@ import styles from './menubar.module.scss';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { FaHamburger, FaUserPlus } from 'react-icons/fa';
+import { FaHamburger, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Button } from '../ui/button';
@@ -71,12 +71,21 @@ export function Menubar() {
               <span>Ramrachai</span>
             </Link>
           ) : (
-            <Link
-              href={'/register'}
-              className='hidden items-center sm:flex border px-3 py-2 rounded hover:bg-[#ffffff21]'>
-              <FaUserPlus size={20} className='inline mr-2' />
-              Register
-            </Link>
+            <div className='flex items-center gap-3'>
+              <Link
+                href={'/register'}
+                className='hidden items-center sm:flex border px-3 py-2 rounded hover:bg-[#ffffff21]'>
+                <FaUserPlus size={20} className='inline mr-2' />
+                Register
+              </Link>
+
+              <Link
+                href={'/login'}
+                className='hidden items-center sm:flex border px-3 py-2 rounded  bg-gray-100 text-gray-800  hover:bg-gray-300'>
+                <FaSignInAlt size={20} className='inline mr-2' />
+                Login
+              </Link>
+            </div>
           )}
         </div>
 
@@ -98,12 +107,21 @@ export function Menubar() {
                 <span>Ramrachai</span>
               </Link>
             ) : (
-              <Link
-                href={'/register'}
-                className='flex items-center sm:hidden border px-3 py-2 rounded  hover:bg-[#ffffff21]'>
-                <FaUserPlus size={20} className='inline mr-2' />
-                Register
-              </Link>
+              <div className='flex items-center gap-2'>
+                <Link
+                  href={'/register'}
+                  className='flex items-center sm:hidden border px-2 py-1 text-sm rounded  hover:bg-[#ffffff21]'>
+                  <FaUserPlus size={20} className='inline mr-2' />
+                  Register
+                </Link>
+
+                <Link
+                  href={'/login'}
+                  className='flex items-center sm:hidden border bg-gray-100 text-gray-800 px-2 py-1 text-sm rounded  hover:bg-gray-300'>
+                  <FaSignInAlt size={20} className='inline mr-2' />
+                  Login
+                </Link>
+              </div>
             )}
           </div>
         )}
