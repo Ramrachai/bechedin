@@ -9,7 +9,7 @@ import RegisterForm from '@/components/RegisterForm/RegisterForm';
 
 const Register = () => {
   const [errors, setErrors] = useState({});
-  const [serverRes, setServerRes] = useState(null);
+  const [serverRes, setServerRes] = useState({ success: null, message: null });
   const router = useRouter();
 
   const handleSubmit = async (event) => {
@@ -41,11 +41,11 @@ const Register = () => {
         email,
         password,
       });
-      setServerRes(serverData);
-      event.target.reset();
-      setErrors({});
 
-      if (serverData.status === 'success') {
+      setServerRes(serverData);
+      if (serverData.success == true) {
+        event.target.reset();
+        setErrors({});
         router.push('/otp');
       }
     } catch (error) {
@@ -62,10 +62,10 @@ const Register = () => {
           <p className={styles.subTitle}>
             Sign up now and get full access to Bike Arot
           </p>
-          {serverRes?.status && (
+          {serverRes && (
             <p
               className={`${
-                serverRes?.status == 'failed' ? styles.error : styles.success
+                serverRes?.success == false ? styles.error : styles.success
               } text-center mt-2`}>
               {serverRes.message}
             </p>

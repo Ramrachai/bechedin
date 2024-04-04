@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './login.module.scss';
 import {
@@ -13,13 +14,35 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/images/logo.png';
+import axios from 'axios';
+import { SERVER_URL } from '@/lib/enums';
+import useAuthStore from '@/zustand/useAuthStore';
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
-  async function handleSubmit(formaData) {
-    'use server';
-    let username = formaData.get('username');
+  const { updateLoginStatus } = useAuthStore();
+  const router = useRouter();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let formaData = new FormData(e.target);
+    let email = formaData.get('email');
     let password = formaData.get('password');
-    console.log('data ==', username, password);
+    console.log('Hello login page!', email, password);
+
+    let response = await axios.post(
+      SERVER_URL + '/api/auth/login',
+      { email, password },
+      { withCredentials: true }
+    );
+
+    console.log(response.data);
+    if (response.data.loggedIn == true) {
+      updateLoginStatus(true);
+      router.push('/dashboard');
+    } else {
+      updateLoginStatus(false);
+      router.push('/login');
+    }
   }
 
   return (
@@ -47,7 +70,7 @@ const LoginPage = () => {
       </div>
       <div className={styles.formContainer}>
         <h1 className={styles.title}>Login</h1>
-        <form className={styles.form} action={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label htmlFor='email'>Email</label>
             <input

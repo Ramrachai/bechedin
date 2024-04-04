@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '@/assets/images/logo2.png';
 import userPic from '@/assets/images/user.jpg';
 import styles from './menubar.module.scss';
@@ -11,6 +11,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Button } from '../ui/button';
 import { MdLogin } from 'react-icons/md';
+import useAuthStore from '@/zustand/useAuthStore';
 
 export default function MainMenu() {
   const pathname = usePathname();
@@ -20,9 +21,14 @@ export default function MainMenu() {
 
 export function Menubar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
   const isHomepage = pathname === '/';
+  const { isLoggedIn, updateLogInStatus } = useAuthStore();
+
+  useEffect(() => {
+    updateLogInStatus();
+  }, []);
+  console.log('is login status==', isLoggedIn);
 
   const menuItems = [
     {

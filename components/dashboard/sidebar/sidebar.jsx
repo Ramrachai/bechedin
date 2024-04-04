@@ -15,6 +15,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuLink from './menuLink/menuLink';
+import Logout from '@/components/logout/Logout';
 
 const Sidebar = () => {
   const menuItems = [
@@ -71,11 +72,6 @@ const Sidebar = () => {
           path: '/dashboard/settings',
           icon: <MdOutlineSettings />,
         },
-        {
-          title: 'Logout',
-          path: '/',
-          icon: <MdLogout />,
-        },
       ],
     },
   ];
@@ -105,6 +101,10 @@ const Sidebar = () => {
             ))}
           </li>
         ))}
+
+        <Logout className={styles.logout}>
+          <MdLogout /> Logout
+        </Logout>
       </ul>
     </div>
   );
