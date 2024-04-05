@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { LogInStatus } from './loginStatus';
 
 export default function Home() {
-  return (
-    <div className='wrapper'>
-      <Hero />
-      <Features />
-      <div className='featured'></div>
-      <div className='latest'></div>
-      <div className='info'></div>
-      {/* <LogInStatus /> */}
-    </div>
-  );
+    return (
+        <div className='wrapper'>
+            <Hero />
+            <Features />
+            <div className='featured'></div>
+            <div className='latest'></div>
+            <div className='info'></div>
+            {/* <LogInStatus /> */}
+        </div>
+    );
 }

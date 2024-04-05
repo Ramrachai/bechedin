@@ -47,4 +47,19 @@
 .icons {
   display: flex;
   gap: 20px;
+  align-items: center;
+  justify-content: center;
+  
+  a,button {
+    padding: 3px 6px; 
+    bg: var(--bgSoft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px
+  }
+
+  svg {
+    display: inline;
+  }
 }

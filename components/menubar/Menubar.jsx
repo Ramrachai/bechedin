@@ -1,137 +1,157 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from '@/assets/images/logo2.png';
 import userPic from '@/assets/images/user.jpg';
 import styles from './menubar.module.scss';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { FaHamburger, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import { FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { CiMenuBurger } from 'react-icons/ci';
 import { Button } from '../ui/button';
-import { MdLogin } from 'react-icons/md';
 import useAuthStore from '@/zustand/useAuthStore';
 
 export default function MainMenu() {
-  const pathname = usePathname();
-  const isDashboard = pathname.startsWith('/dashboard');
-  return <>{isDashboard ? null : <Menubar />}</>;
+    const pathname = usePathname();
+    const isDashboard = pathname.startsWith('/dashboard');
+    return <>{isDashboard ? null : <Menubar />}</>;
 }
 
 export function Menubar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isHomepage = pathname === '/';
-  const { isLoggedIn, updateLogInStatus } = useAuthStore();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const isHomepage = pathname === '/';
+    const { isLoggedIn } = useAuthStore();
+    // console.log('is login status==', isLoggedIn);
+    const menuItems = [
+        {
+            title: 'All Bikes',
+            link: '/allbike',
+        },
 
-  useEffect(() => {
-    updateLogInStatus();
-  }, []);
-  console.log('is login status==', isLoggedIn);
+        {
+            title: 'Sell bike',
+            link: '/sellbike',
+        },
+        {
+            title: 'Bike Adda',
+            link: '/bikeadda',
+        },
+    ];
 
-  const menuItems = [
-    {
-      title: 'All Bikes',
-      link: '/allbike',
-    },
+    return (
+        <div className={`${styles.wrapper} ${!isHomepage && styles.dark}`}>
+            <div className={styles.container}>
+                <Link href={'/'} className={styles.logo}>
+                    <Image src={logo} alt='bike arot logo' width={100} />
+                </Link>
+                <ul className={styles.links}>
+                    {menuItems.map((item, index) => (
+                        <Link
+                            href={item.link}
+                            key={index}
+                            className={styles.menuItem}>
+                            {item.title}
+                        </Link>
+                    ))}
+                </ul>
 
-    {
-      title: 'Sell bike',
-      link: '/sellbike',
-    },
-    {
-      title: 'Bike Adda',
-      link: '/bikeadda',
-    },
-  ];
+                <div className={styles.buttons}>
+                    <Button
+                        size='icon'
+                        className='sm:hidden'
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <GiHamburgerMenu />
+                    </Button>
 
-  return (
-    <div className={`${styles.wrapper} ${!isHomepage && styles.dark}`}>
-      <div className={styles.container}>
-        <Link href={'/'} className={styles.logo}>
-          <Image src={logo} alt='bike arot logo' width={100} />
-        </Link>
-        <ul className={styles.links}>
-          {menuItems.map((item, index) => (
-            <Link href={item.link} key={index} className={styles.menuItem}>
-              {item.title}
-            </Link>
-          ))}
-        </ul>
+                    {isLoggedIn ? (
+                        <Link
+                            href={'/dashboard'}
+                            title='profile'
+                            className={styles.userProfile}>
+                            <Image
+                                src={userPic}
+                                alt='user photo'
+                                width={35}
+                                height={35}
+                            />
+                            <span>Ramrachai</span>
+                        </Link>
+                    ) : (
+                        <div className='flex items-center gap-3'>
+                            <Link
+                                href={'/register'}
+                                className='hidden items-center sm:flex border px-3 py-2 rounded hover:bg-[#ffffff21]'>
+                                <FaUserPlus size={20} className='inline mr-2' />
+                                Register
+                            </Link>
 
-        <div className={styles.buttons}>
-          <Button
-            size='icon'
-            className='sm:hidden'
-            onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <GiHamburgerMenu />
-          </Button>
+                            <Link
+                                href={'/login'}
+                                className='hidden items-center sm:flex border px-3 py-2 rounded  bg-gray-100 text-gray-800  hover:bg-gray-300'>
+                                <FaSignInAlt
+                                    size={20}
+                                    className='inline mr-2'
+                                />
+                                Login
+                            </Link>
+                        </div>
+                    )}
+                </div>
 
-          {isLoggedIn ? (
-            <Link
-              href={'/dashboard'}
-              title='profile'
-              className={styles.userProfile}>
-              <Image src={userPic} alt='user photo' width={35} height={35} />
-              <span>Ramrachai</span>
-            </Link>
-          ) : (
-            <div className='flex items-center gap-3'>
-              <Link
-                href={'/register'}
-                className='hidden items-center sm:flex border px-3 py-2 rounded hover:bg-[#ffffff21]'>
-                <FaUserPlus size={20} className='inline mr-2' />
-                Register
-              </Link>
+                {isMenuOpen && (
+                    <div className={styles.mobileMenu}>
+                        <ul>
+                            {menuItems.map((item, index) => (
+                                <li key={index}>
+                                    <Link
+                                        href={item.link}
+                                        className={styles.menuItem}>
+                                        {item.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
 
-              <Link
-                href={'/login'}
-                className='hidden items-center sm:flex border px-3 py-2 rounded  bg-gray-100 text-gray-800  hover:bg-gray-300'>
-                <FaSignInAlt size={20} className='inline mr-2' />
-                Login
-              </Link>
+                        {isLoggedIn ? (
+                            <Link
+                                href={'/dashboard'}
+                                title='profile'
+                                className={styles.user}>
+                                <Image
+                                    src={userPic}
+                                    alt='user photo'
+                                    width={35}
+                                    height={35}
+                                />
+                                <span>Ramrachai</span>
+                            </Link>
+                        ) : (
+                            <div className='flex items-center gap-2'>
+                                <Link
+                                    href={'/register'}
+                                    className='flex items-center sm:hidden border px-2 py-1 text-sm rounded  hover:bg-[#ffffff21]'>
+                                    <FaUserPlus
+                                        size={20}
+                                        className='inline mr-2'
+                                    />
+                                    Register
+                                </Link>
+
+                                <Link
+                                    href={'/login'}
+                                    className='flex items-center sm:hidden border bg-gray-100 text-gray-800 px-2 py-1 text-sm rounded  hover:bg-gray-300'>
+                                    <FaSignInAlt
+                                        size={20}
+                                        className='inline mr-2'
+                                    />
+                                    Login
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
-          )}
         </div>
-
-        {isMenuOpen && (
-          <div className={styles.mobileMenu}>
-            <ul>
-              {menuItems.map((item, index) => (
-                <li key={index}>
-                  <Link href={item.link} className={styles.menuItem}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {isLoggedIn ? (
-              <Link href={'/dashboard'} title='profile' className={styles.user}>
-                <Image src={userPic} alt='user photo' width={35} height={35} />
-                <span>Ramrachai</span>
-              </Link>
-            ) : (
-              <div className='flex items-center gap-2'>
-                <Link
-                  href={'/register'}
-                  className='flex items-center sm:hidden border px-2 py-1 text-sm rounded  hover:bg-[#ffffff21]'>
-                  <FaUserPlus size={20} className='inline mr-2' />
-                  Register
-                </Link>
-
-                <Link
-                  href={'/login'}
-                  className='flex items-center sm:hidden border bg-gray-100 text-gray-800 px-2 py-1 text-sm rounded  hover:bg-gray-300'>
-                  <FaSignInAlt size={20} className='inline mr-2' />
-                  Login
-                </Link>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    );
 }

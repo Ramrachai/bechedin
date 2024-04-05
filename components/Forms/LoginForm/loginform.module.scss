@@ -1,0 +1,199 @@
+
+.textContainer {
+    border: 1px solid var(--black);
+    width: 320px;
+    height: 450px;
+    border-radius: 0.75rem 0 0 0.75rem;
+    padding: 2rem;
+    @media (max-width: 680px) {
+      display: none;
+    }
+    img {
+      display: block;
+      margin: auto;
+    }
+    h2 {
+      font-family: var(--beyond);
+      letter-spacing: 2px;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      span {
+        background: var(--grad-2);
+        background-clip: text;
+        color: transparent;
+      }
+    }
+    p {
+      font-size: 14px;
+      color: var(--softWhite);
+    }
+    ul {
+      margin-top: 2rem;
+      li {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 30px auto; 
+        justify-content: start;
+        gap: 8px;
+        margin: 6px 0;
+        padding: 6px 0; 
+        font-size: 14px;
+        color: var(--softBlack);
+        svg {
+          display: inline;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+  
+  .formContainer {
+    width: 320px;
+    height: 450px;
+    border-radius: 0 0.75rem 0.75rem 0;
+    background-color: #111827;
+    padding: 2rem;
+    color: var(--white);
+    @media (max-width: 680px) {
+      border-radius:  0.75rem;
+    }
+    .title {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 700;
+      font-family: var(--beyond);
+      letter-spacing: 4px;
+    }
+  
+    .form {
+      margin-top: 1.5rem;
+    }
+  
+    .inputGroup {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+  
+      label {
+        display: block;
+        color: #9ca3af;
+        margin-bottom: 4px;
+      }
+  
+      input {
+        width: 100%;
+        border-radius: 0.375rem;
+        border: 1px solid rgba(55, 65, 81, 1);
+        outline: 0;
+        background-color: rgba(17, 24, 39, 1);
+        padding: 0.75rem 1rem;
+        color: rgba(243, 244, 246, 1);
+  
+        &:focus {
+          border-color: var(--primary);
+        }
+      }
+    }
+  
+    .forgot {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgba(156, 163, 175, 1);
+      margin: 8px 0 14px 0;
+  
+      a,
+      .signup a {
+        color: rgba(243, 244, 246, 1);
+        text-decoration: none;
+        font-size: 14px;
+  
+        &:hover {
+          text-decoration: underline var(--primary);
+        }
+      }
+    }
+  
+    .signIn {
+      display: block;
+      width: 100%;
+      background: var(--grad-1);
+      padding: 0.75rem;
+      text-align: center;
+      color: var(--black);
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      transition: all 0.9s;
+      &:hover {
+        background: var(--grad-2);
+      }
+    }
+  }
+  
+  .socialMessage {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+  
+    .line {
+      height: 1px;
+      flex: 1 1 0%;
+      background-color: rgba(55, 65, 81, 1);
+    }
+  
+    .message {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: rgba(156, 163, 175, 1);
+    }
+  }
+  
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+  
+    button {
+      border-radius: 0.125rem;
+      padding: 0.75rem;
+      border: none;
+      background-color: transparent;
+      margin-left: 8px;
+      transition: all 0.3s;
+  
+      svg {
+        height: 1.25rem;
+        width: 1.25rem;
+        fill: #fff;
+      }
+  
+      &:hover {
+        transform: translateY(-5px);
+        svg {
+          fill: #ffffffc9;
+        }
+      }
+    }
+  }
+  
+  .signup {
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+  
+    a {
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 0 8px;
+      &:hover {
+        color: var(--primary);
+        text-decoration: underline var(--primary);
+      }
+    }
+  }

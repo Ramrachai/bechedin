@@ -4,87 +4,58 @@ import React, { useState } from 'react';
 import styles from './register.module.scss';
 import { useRouter } from 'next/navigation';
 import validateRegisterForm from '@/utils/registerValidation';
-import submitRegisterForm from '@/utils/submitRegister';
-import RegisterForm from '@/components/RegisterForm/RegisterForm';
+import RegisterForm from '@/components/Forms/RegisterForm/RegisterForm';
+import { RegisterApiRequest } from '@/utils/apiRequest';
+import toast from 'react-hot-toast';
 
 const Register = () => {
-  const [errors, setErrors] = useState({});
-  const [serverRes, setServerRes] = useState({ success: null, message: null });
-  const router = useRouter();
+    const [errors, setErrors] = useState({});
+    const router = useRouter();
+    const [formData, setFormData] = useState({});
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const email = formData.get('email');
-    const password = formData.get('password');
-    const confirmPassword = formData.get('confirmPassword');
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
-    const validationErrors = validateRegisterForm({
-      name,
-      phone,
-      email,
-      password,
-      confirmPassword,
-    });
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const validationErrors = validateRegisterForm(formData); //for input validation
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+        const serverResponse = await RegisterApiRequest(formData); //send data to server
+        if (serverResponse.success === true) {
+            setFormData({});
+            setErrors({});
+            toast.success(serverResponse.message + ' .OTP sent to email');
+            router.push('/otp');
+        } else {
+            toast.error(serverResponse.message);
+        }
+    };
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    try {
-      const serverData = await submitRegisterForm({
-        name,
-        phone,
-        email,
-        password,
-      });
-
-      setServerRes(serverData);
-      if (serverData.success == true) {
-        event.target.reset();
-        setErrors({});
-        router.push('/otp');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setErrors({ message: error.message });
-    }
-  };
-
-  return (
-    <>
-      <div className={styles.pageContainer}>
-        <div className={styles.formContainer}>
-          <h1 className={styles.title}>Register</h1>
-          <p className={styles.subTitle}>
-            Sign up now and get full access to Bike Arot
-          </p>
-          {serverRes && (
-            <p
-              className={`${
-                serverRes?.success == false ? styles.error : styles.success
-              } text-center mt-2`}>
-              {serverRes.message}
-            </p>
-          )}
-
-          <RegisterForm
-            handleSubmit={handleSubmit}
-            errors={errors}
-            serverRes={serverRes}
-          />
-
-          <p className={styles.signin}>
-            Already have an account?
-            <Link href='/login'>Log in</Link>
-          </p>
-        </div>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className={styles.pageContainer}>
+                <div className={styles.formContainer}>
+                    <h1 className={styles.title}>Register</h1>
+                    <p className={styles.subTitle}>
+                        Sign up now and get full access to Bike Arot
+                    </p>
+                    <RegisterForm
+                        handleSubmit={handleSubmit}
+                        errors={errors}
+                        handleChange={handleChange}
+                    />
+                    <p className={styles.signin}>
+                        Already have an account?
+                        <Link href='/login'>Log in</Link>
+                    </p>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default Register;

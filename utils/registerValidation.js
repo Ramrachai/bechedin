@@ -1,7 +1,6 @@
 const validateRegisterForm = (formData) => {
   const { name, phone, email, password, confirmPassword } = formData;
   const errors = {};
-
   if (!name || name.trim().length < 3) {
     errors.name = 'Required! min 3 characters';
   }

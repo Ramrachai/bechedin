@@ -1,6 +1,10 @@
 import { Lato } from 'next/font/google';
 import './globals.css';
 import Menubar from '@/components/menubar/Menubar';
+import { Toaster } from 'react-hot-toast';
+
+
+
 
 const lato = Lato({
   weight: '400',
@@ -16,6 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={lato.className}>
+        <Toaster position='top-center' />
         <Menubar />
         {children}
       </body>
